@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { Route, Routes } from 'react-router';
+import styled from "styled-components"
+
+import Board from "./pages/Board";
+import Main from "./pages/Main";
+import Detail from "./pages/Detail";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrap>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/board/:id" element={<Board/>} />
+        <Route path="/detail/:id" element={<Detail/>}/>
+      </Routes>
+    </Wrap>
   );
 }
 
 export default App;
+
+const Wrap = styled.div`
+width: 60%;
+margin: 0 auto;
+`;
